@@ -94,9 +94,14 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     super.viewDidLoad()
   }
 	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return UIStatusBarStyle.default
+	}
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		loadSavedCredential()
+		UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
+		//loadSavedCredential()
 	}
   
   // MARK: Custom Methods
@@ -162,7 +167,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic
 	
 	func navigateToStatementView()
 	{
-		performSegue(withIdentifier: "StatementView", sender: self)
+		DispatchQueue.main.async {
+			self.performSegue(withIdentifier: "StatementView", sender: self)
+		}
 	}
 	
 	func presentStatmentView(viewModel: Login.LoginUser.ViewModel)

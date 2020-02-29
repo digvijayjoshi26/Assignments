@@ -81,6 +81,10 @@ class StatementViewController: UIViewController, StatementDisplayLogic
 		fetchStatement()
   }
 	
+	override func viewDidLayoutSubviews() {
+		UIApplication.shared.statusBarView?.backgroundColor =
+			UIColor(red: 71/255.0, green: 76/255.0, blue: 229/255.0, alpha: 1.0)
+	}
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		getUserAccountDetail()

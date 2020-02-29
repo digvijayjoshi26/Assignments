@@ -42,15 +42,17 @@ class Utility: NSObject {
 	}
 	
 	static func displayAlert(title: String, message: String) {
-		let alert = UIAlertController(title: title, message:message, preferredStyle: UIAlertController.Style.alert)
-		
-		alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-		
-		let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-		alertWindow.rootViewController = UIViewController()
-		alertWindow.windowLevel = UIWindow.Level.alert + 1;
-		alertWindow.makeKeyAndVisible()
-		alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
+		DispatchQueue.main.async {
+			let alert = UIAlertController(title: title, message:message, preferredStyle: UIAlertController.Style.alert)
+			
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+			
+			let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+			alertWindow.rootViewController = UIViewController()
+			alertWindow.windowLevel = UIWindow.Level.alert + 1;
+			alertWindow.makeKeyAndVisible()
+			alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
+		}	
 	}
 	
 }

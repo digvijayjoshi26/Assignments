@@ -162,7 +162,6 @@
 				416C4BE32360B3AC00E43B12 /* Common */,
 				41366E9E2360755100F80EAB /* Models */,
 				41366E9D2360754900F80EAB /* Services */,
-				41366E9C2360753E00F80EAB /* Workers */,
 				41366E9B2360752400F80EAB /* Scene */,
 				41366E61236074E400F80EAB /* AppDelegate.swift */,
 				41366E65236074E400F80EAB /* Main.storyboard */,
@@ -198,13 +197,6 @@
 				41EF0C852364048F00ACF3B3 /* Statement */,
 			);
 			path = Scene;
-			sourceTree = "<group>";
-		};
-		41366E9C2360753E00F80EAB /* Workers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Workers;
 			sourceTree = "<group>";
 		};
 		41366E9D2360754900F80EAB /* Services */ = {

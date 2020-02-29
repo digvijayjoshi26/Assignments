@@ -44,7 +44,7 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore
 																	balance: responseData.balance)
 				self.presenter?.presentStatementView(response: responseData)
 			} else{
-				print("error")
+				Utility.displayAlert(title: "Network Error", message: error!.localizedDescription)
 			}
 		})
   }

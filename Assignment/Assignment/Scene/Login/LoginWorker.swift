@@ -38,38 +38,32 @@ class LoginWorker
 		let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
 			if (error != nil) {
 				completion(nil, error)
-				print(error!)
 			} else {
-				do {
-					let errorDictionary: NSDictionary?
-					let userAccountDictionary: [String: AnyObject]
-					
-					if let json = data?.jsonDictionary() {
-						
-						errorDictionary = json[Constants.kErrorDictionaryKey] as? NSDictionary
-						userAccountDictionary = (json["userAccount"] as! [String : AnyObject])
-						
-						if errorDictionary!.count > 0{
-							completion(nil, error)
-							return
-						} else if ((userAccountDictionary as AnyObject).count > 0) {
-							let userAccount = Login.LoginUser.Response(bankAccount: String(describing: userAccountDictionary["bankAccount"]!),
-																												 agency: String(describing: userAccountDictionary["agency"]!),
-																												 userId: String(describing: userAccountDictionary["userId"]!),
-																												 name: String(describing: userAccountDictionary["name"]!),
-																												 balance: String(describing: userAccountDictionary["balance"]!))
-							completion(userAccount, nil)
-							return
-						}
-					}
-				} catch {
-					completion(nil, error)
-				}
+				let errorDictionary: NSDictionary?
+				let userAccountDictionary: [String: AnyObject]
 				
+				if let json = data?.jsonDictionary() {
+					
+					errorDictionary = json[Constants.kErrorDictionaryKey] as? NSDictionary
+					userAccountDictionary = (json["userAccount"] as! [String : AnyObject])
+					
+					if errorDictionary!.count > 0{
+						completion(nil, error)
+						return
+					} else if ((userAccountDictionary as AnyObject).count > 0) {
+						let userAccount = Login.LoginUser.Response(bankAccount: String(describing: userAccountDictionary["bankAccount"]!),
+																											 agency: String(describing: userAccountDictionary["agency"]!),
+																											 userId: String(describing: userAccountDictionary["userId"]!),
+																											 name: String(describing: userAccountDictionary["name"]!),
+																											 balance: String(describing: userAccountDictionary["balance"]!))
+						completion(userAccount, nil)
+						return
+					}
+				}
 			}
 		})
 		
 		dataTask.resume()
 	}
-		
+	
 }
